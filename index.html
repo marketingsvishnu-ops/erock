@@ -1,485 +1,272 @@
-```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>VOLT ATHLETICS | Unleash Your Power</title>
-<link href="https://fonts.googleapis.com/css2?family=Anton&family=Barlow+Condensed:wght@400;500;600;700;800;900&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<title>ICESUPER Demo</title>
 
 <style>
-:root{
-  --bg:#10100f;
-  --surface:#191917;
-  --orange:#ff542d;
-  --cream:#f2f0e8;
-  --muted:#92918a;
-  --line:#33332e;
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:Arial,sans-serif;
 }
-*{margin:0;padding:0;box-sizing:border-box}
-html{scroll-behavior:smooth}
-body{background:var(--bg);color:var(--cream);font-family:'DM Sans',sans-serif;overflow-x:hidden}
-a{color:inherit;text-decoration:none}
-button,input,select{font:inherit}
-button{cursor:pointer}
-.container{width:min(1200px,90%);margin:auto}
-.display{font-family:'Anton',sans-serif;text-transform:uppercase;font-weight:400}
-.orange{color:var(--orange)}
-.eyebrow{font-size:10px;text-transform:uppercase;letter-spacing:3px;color:var(--orange);font-weight:700}
-.section{padding:100px 0}
-.section-title{font:400 clamp(48px,8vw,94px)/.9 'Anton',sans-serif;text-transform:uppercase;letter-spacing:-1px}
-.btn{
-  display:inline-flex;align-items:center;justify-content:center;gap:20px;
-  background:var(--orange);color:white;padding:16px 22px;
-  text-transform:uppercase;letter-spacing:1.3px;font-size:10px;font-weight:800;
-  border:1px solid var(--orange);transition:.25s;
+
+body{
+  background:#0f1020;
+  color:white;
 }
-.btn:hover{background:transparent;color:var(--orange);transform:translateY(-3px)}
-.btn.dark{background:transparent;border-color:var(--line);color:var(--cream)}
-.btn.dark:hover{border-color:var(--orange);color:var(--orange)}
-.arrow{font-size:18px}
 
-header{height:78px;border-bottom:1px solid var(--line);display:flex;align-items:center;position:relative;z-index:10}
-.nav{display:flex;align-items:center;justify-content:space-between;gap:20px}
-.brand{font:400 26px 'Anton',sans-serif;letter-spacing:1px}
-.brand span{color:var(--orange)}
-.brand small{display:block;font:700 8px 'DM Sans',sans-serif;letter-spacing:4px;color:var(--muted)}
-.nav-links{display:flex;gap:30px}
-.nav-links a{font-size:10px;letter-spacing:1px;text-transform:uppercase;color:#c4c2ba}
-.nav-links a:hover{color:var(--orange)}
-.menu-toggle{display:none;background:none;color:white;border:0;font-size:25px}
-
-.hero{min-height:700px;display:flex;align-items:center;position:relative;overflow:hidden}
-.hero:before{
-  content:"";position:absolute;width:600px;height:600px;border-radius:50%;
-  background:var(--orange);filter:blur(170px);opacity:.11;right:-160px;top:30px;
+.container{
+  display:flex;
+  min-height:100vh;
 }
-.hero-layout{display:grid;grid-template-columns:1fr 1fr;align-items:center;gap:25px;padding:70px 0;position:relative}
-.hero-copy .eyebrow{display:flex;align-items:center;gap:12px;margin-bottom:27px}
-.live-dot{width:8px;height:8px;border-radius:50%;background:var(--orange);box-shadow:0 0 15px var(--orange)}
-.hero h1{font:400 clamp(76px,11.7vw,145px)/.79 'Anton',sans-serif;text-transform:uppercase;letter-spacing:-2px}
-.hero h1 .stroke{color:transparent;-webkit-text-stroke:1px var(--cream)}
-.hero h1 .slash{color:var(--orange)}
-.hero-description{max-width:370px;font-size:12px;line-height:2;color:var(--muted);margin:28px 0}
-.hero-buttons{display:flex;gap:12px;flex-wrap:wrap}
-.hero-stats{display:flex;gap:30px;margin-top:42px}
-.stat{border-left:2px solid var(--orange);padding-left:12px}
-.stat strong{font:400 33px 'Anton',sans-serif;display:block}
-.stat span{font-size:9px;color:var(--muted);text-transform:uppercase;letter-spacing:1px}
 
-.energy-art{height:500px;position:relative;display:grid;place-items:center}
-.art-disc{
-  position:absolute;width:370px;height:370px;border:1px solid rgba(255,84,45,.45);
-  border-radius:50%;animation:spin 20s linear infinite;
+.demo{
+  width:70%;
+  background:#111;
 }
-.art-disc:before,.art-disc:after{content:"";position:absolute;border:1px solid rgba(255,84,45,.3);border-radius:50%}
-.art-disc:before{inset:25px}
-.art-disc:after{inset:55px}
-.art-disc.two{width:440px;height:220px;transform:rotate(-35deg);border-color:rgba(242,240,232,.2);animation-duration:15s;animation-direction:reverse}
-.art-disc.three{width:250px;height:430px;transform:rotate(40deg);border-color:rgba(255,84,45,.2);animation-duration:26s}
-@keyframes spin{to{rotate:360deg}}
-.energy-core{
-  width:190px;height:230px;position:relative;z-index:2;
-  background:linear-gradient(145deg,#ff7b46,#ff542d 42%,#7f1f12);
-  clip-path:polygon(50% 0%,100% 25%,82% 83%,50% 100%,18% 83%,0% 25%);
-  display:grid;place-items:center;filter:drop-shadow(0 0 50px rgba(255,84,45,.35));
-  animation:float 4s ease-in-out infinite;
+
+iframe{
+  width:100%;
+  height:100vh;
+  border:none;
 }
-.energy-core span{font:400 105px 'Anton',sans-serif;color:#17100d;transform:rotate(-10deg)}
-@keyframes float{50%{transform:translateY(-14px) rotate(3deg)}}
-.art-label{position:absolute;z-index:3;background:var(--cream);color:var(--bg);padding:11px 14px;font:400 18px 'Anton',sans-serif;text-transform:uppercase;transform:rotate(-5deg)}
-.art-label.top{top:45px;right:5px}
-.art-label.bottom{bottom:38px;left:0;background:var(--orange);color:white;transform:rotate(4deg)}
-.art-index{position:absolute;left:5px;top:25px;color:var(--muted);font-size:9px;letter-spacing:2px}
-.art-side{position:absolute;right:0;bottom:80px;writing-mode:vertical-rl;color:var(--muted);font-size:9px;letter-spacing:3px}
 
-.marquee{background:var(--orange);color:#fff;padding:15px 0;overflow:hidden;transform:rotate(-1deg) scale(1.02)}
-.marquee-track{display:flex;width:max-content;animation:marquee 25s linear infinite}
-.marquee span{font:400 25px 'Anton',sans-serif;text-transform:uppercase;white-space:nowrap;padding:0 18px}
-@keyframes marquee{to{transform:translateX(-50%)}}
-
-.section-heading{display:flex;align-items:end;justify-content:space-between;gap:25px;margin-bottom:42px}
-.section-heading p{font-size:12px;line-height:1.9;color:var(--muted);max-width:330px}
-.program-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:15px}
-.program-card{background:var(--surface);border:1px solid var(--line);padding:25px;min-height:345px;position:relative;overflow:hidden;transition:.3s}
-.program-card:hover{border-color:var(--orange);transform:translateY(-6px)}
-.program-number{font-size:10px;color:var(--orange);letter-spacing:2px}
-.program-symbol{height:130px;display:grid;place-items:center;font:400 90px 'Anton',sans-serif;color:var(--orange);opacity:.9}
-.program-card h3{font:400 34px 'Anton',sans-serif;text-transform:uppercase;margin-bottom:10px}
-.program-card p{font-size:11px;line-height:1.9;color:var(--muted)}
-.program-footer{position:absolute;bottom:20px;left:25px;right:25px;padding-top:13px;border-top:1px solid var(--line);display:flex;justify-content:space-between;font-size:9px;letter-spacing:1px;text-transform:uppercase}
-.program-footer b{color:var(--orange);font-size:16px}
-
-.feature{padding:0 0 100px}
-.feature-panel{
-  min-height:370px;background:var(--orange);color:#fff;position:relative;overflow:hidden;
-  display:grid;grid-template-columns:1.1fr .9fr;align-items:center;padding:55px;
+.right{
+  width:30%;
+  padding:30px 22px;
+  background:linear-gradient(180deg,#181a35,#0b0c18);
+  display:flex;
+  align-items:center;
+  justify-content:center;
 }
-.feature-panel:after{content:"V";position:absolute;right:0;bottom:-130px;font:400 440px 'Anton',sans-serif;color:rgba(0,0,0,.09)}
-.feature-copy{position:relative;z-index:1}
-.feature-copy .eyebrow{color:#32130b}
-.feature-copy h2{font:400 clamp(55px,7vw,90px)/.86 'Anton',sans-serif;text-transform:uppercase;margin:22px 0}
-.feature-copy p{font-size:12px;line-height:1.9;max-width:390px}
-.feature-copy .btn{background:var(--bg);border-color:var(--bg);margin-top:25px}
-.feature-copy .btn:hover{background:transparent;color:var(--bg)}
-.feature-graphic{font:400 clamp(120px,20vw,240px)/.8 'Anton',sans-serif;text-align:center;color:rgba(255,255,255,.9);transform:rotate(-10deg);position:relative;z-index:1}
 
-.pricing{background:#151513}
-.pricing-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
-.price-card{border:1px solid var(--line);padding:30px 25px;position:relative}
-.price-card.featured{border-color:var(--orange);background:#211a17}
-.price-tag{position:absolute;right:0;top:0;background:var(--orange);padding:8px 11px;font-size:8px;font-weight:800;letter-spacing:1px}
-.price-name{font:400 27px 'Anton',sans-serif;text-transform:uppercase}
-.price{font:400 62px 'Anton',sans-serif;margin:25px 0 0}
-.price small{font:500 12px 'DM Sans',sans-serif;color:var(--muted)}
-.price-note{font-size:11px;color:var(--muted);margin:0 0 24px}
-.price-card ul{list-style:none;margin-bottom:30px;display:grid;gap:15px}
-.price-card li{font-size:11px;color:#d4d2ca}
-.price-card li:before{content:"↗";color:var(--orange);margin-right:10px}
-.price-card .btn{width:100%}
-
-.bmi-grid{display:grid;grid-template-columns:1fr 1fr;gap:55px;align-items:center}
-.bmi-description{font-size:12px;color:var(--muted);line-height:2;margin-top:23px;max-width:380px}
-.bmi-card{background:var(--surface);border:1px solid var(--line);padding:30px}
-.bmi-card h3{font:400 29px 'Anton',sans-serif;text-transform:uppercase;margin-bottom:24px}
-.input-grid{display:grid;grid-template-columns:1fr 1fr;gap:15px}
-.input-group label{display:block;font-size:10px;text-transform:uppercase;letter-spacing:1px;color:var(--muted);margin-bottom:9px}
-.input-group input{width:100%;padding:14px;background:var(--bg);color:white;border:1px solid var(--line);outline:none}
-.input-group input:focus{border-color:var(--orange)}
-.bmi-card .btn{width:100%;margin-top:18px}
-.result{display:none;border:1px solid var(--orange);margin-top:20px;padding:20px}
-.result strong{display:block;font:400 48px 'Anton',sans-serif;color:var(--orange)}
-.result p{font-size:12px;color:var(--muted);line-height:1.8}
-.result small{display:block;margin-top:8px;color:var(--muted);font-size:10px}
-.bmi-disclaimer{font-size:10px;line-height:1.7;color:var(--muted);margin-top:14px}
-
-.contact{background:var(--orange);padding:55px 0;color:white}
-.contact-row{display:flex;align-items:center;justify-content:space-between;gap:30px}
-.contact h2{font:400 clamp(43px,7vw,80px)/.88 'Anton',sans-serif;text-transform:uppercase}
-.contact p{font-size:11px;margin-top:13px;opacity:.85}
-.contact .btn{background:var(--bg);border-color:var(--bg)}
-.contact .btn:hover{background:transparent;color:var(--bg)}
-footer{padding:30px 0}
-.footer-row{display:flex;align-items:center;justify-content:space-between;gap:20px}
-.footer-copy{font-size:10px;color:var(--muted)}
-.footer-links{display:flex;gap:18px;font-size:10px;text-transform:uppercase}
-.footer-links a:hover{color:var(--orange)}
-.reveal{opacity:0;transform:translateY(22px);transition:.7s ease}
-.reveal.visible{opacity:1;transform:translateY(0)}
-
-@media(max-width:800px){
- .nav-links{display:none;position:absolute;top:77px;left:0;right:0;padding:25px 5%;background:var(--bg);border-bottom:1px solid var(--line);flex-direction:column;gap:22px}
- .nav-links.open{display:flex}
- .menu-toggle{display:block}
- .nav-join{display:none}
- .hero-layout{grid-template-columns:1fr;padding:65px 0 40px}
- .hero h1{font-size:clamp(85px,17vw,130px)}
- .energy-art{height:400px}
- .art-disc{width:290px;height:290px}
- .art-disc.two{width:350px;height:175px}
- .art-disc.three{height:350px;width:190px}
- .energy-core{width:155px;height:190px}
- .energy-core span{font-size:85px}
- .section{padding:75px 0}
- .section-heading{flex-direction:column;align-items:start}
- .program-grid,.pricing-grid{grid-template-columns:1fr}
- .program-card{min-height:310px}
- .feature{padding-bottom:75px}
- .feature-panel{grid-template-columns:1fr;padding:35px;gap:20px}
- .feature-graphic{font-size:150px;text-align:right}
- .bmi-grid{grid-template-columns:1fr;gap:30px}
- .contact-row{align-items:flex-start;flex-direction:column}
+.box{
+  width:100%;
+  background:rgba(10,10,10,.92);
+  border:1px solid #d4af37;
+  border-radius:22px;
+  padding:26px 20px;
+  text-align:center;
+  box-shadow:0 0 35px rgba(212,175,55,.35);
 }
-@media(max-width:450px){
- .hero h1{letter-spacing:-1px}
- .hero-stats{gap:17px}
- .stat strong{font-size:27px}
- .energy-art{height:330px}
- .art-disc{width:240px;height:240px}
- .art-disc.two{width:280px;height:140px}
- .art-disc.three{height:290px;width:150px}
- .art-label.top{right:0}
- .input-grid{grid-template-columns:1fr}
- .bmi-card{padding:20px}
- .footer-row{align-items:flex-start;flex-direction:column}
- .feature-panel{padding:25px}
+
+.badge{
+  display:inline-block;
+  background:#d4af37;
+  color:#111;
+  padding:8px 18px;
+  border-radius:30px;
+  font-weight:800;
+  margin-bottom:16px;
 }
-@media(prefers-reduced-motion:reduce){
- *,*::before,*::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}
- .reveal{opacity:1;transform:none}
+
+h1{
+  font-size:32px;
+  color:#ffd86b;
+  margin-bottom:10px;
+  text-transform:uppercase;
+}
+
+.sub{
+  font-size:17px;
+  line-height:1.5;
+  margin-bottom:22px;
+  color:#eee;
+}
+
+.features{
+  display:grid;
+  gap:12px;
+  margin:22px 0;
+}
+
+.feature{
+  background:linear-gradient(90deg,#1b1b1b,#2b2208);
+  border:1px solid rgba(212,175,55,.6);
+  padding:14px;
+  border-radius:14px;
+  font-size:17px;
+  font-weight:700;
+}
+
+.feature span{
+  color:#ffd86b;
+}
+
+.website-row{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:10px;
+  margin-top:16px;
+  font-size:14px;
+  font-weight:bold;
+}
+
+.website-row a{
+  text-decoration:none;
+}
+
+.website{
+  color:#25D366;
+}
+
+.whatsapp-small{
+  color:#ffd86b;
+}
+
+.cta{
+  display:block;
+  background:#25D366;
+  color:#fff;
+  text-decoration:none;
+  padding:17px;
+  border-radius:16px;
+  font-size:20px;
+  font-weight:900;
+  margin-top:22px;
+  box-shadow:0 8px 18px rgba(37,211,102,.35);
+  transition:.3s;
+}
+
+.cta:hover{
+  transform:scale(1.03);
+  background:#1ebe5d;
+}
+
+.trust{
+  margin-top:16px;
+  color:#ccc;
+  font-size:14px;
+  line-height:1.5;
+}
+
+.footer{
+  margin-top:18px;
+  font-size:12px;
+  color:#aaa;
+  line-height:1.5;
+}
+
+@media(max-width:768px){
+  .container{
+    flex-direction:column;
+  }
+
+  .demo,
+  .right{
+    width:100%;
+  }
+
+  iframe{
+    height:500px;
+  }
+
+  .right{
+    padding:20px;
+  }
+}
+
+@media(max-width:480px){
+  h1{
+    font-size:26px;
+  }
+
+  .sub{
+    font-size:16px;
+  }
+
+  .feature{
+    font-size:16px;
+    padding:12px;
+  }
+
+  .cta{
+    font-size:18px;
+    padding:15px;
+  }
+
+  .website-row{
+    flex-direction:column;
+    gap:8px;
+  }
 }
 </style>
 </head>
 
 <body>
-<header>
-  <div class="container nav">
-    <a href="#home" class="brand">VOLT<span>.</span> ATHLETICS<small>PERFORMANCE CLUB</small></a>
-    <nav class="nav-links" id="navLinks">
-      <a href="#programs">Programs</a>
-      <a href="#about">Our mindset</a>
-      <a href="#pricing">Membership</a>
-      <a href="#bmi">BMI tool</a>
-      <a href="#contact">Contact</a>
-    </nav>
-    <a class="btn nav-join" href="#pricing">Join the movement ↗</a>
-    <button class="menu-toggle" id="menuToggle" aria-label="Toggle navigation" aria-expanded="false">☰</button>
-  </div>
-</header>
 
-<main>
-<section class="hero" id="home">
-  <div class="container hero-layout">
-    <div class="hero-copy">
-      <div class="eyebrow"><span class="live-dot"></span> Your next level starts here</div>
-      <h1>MAKE<br>IT <span class="stroke">HURT.</span><br><span class="slash">MAKE</span><br>IT <span class="slash">COUNT.</span></h1>
-      <p class="hero-description">A different kind of training floor. Serious equipment, focused coaching and a community that pushes you to become stronger.</p>
-      <div class="hero-buttons">
-        <a class="btn" href="#pricing">Find your membership <span class="arrow">↗</span></a>
-        <a class="btn dark" href="#programs">Explore training <span class="arrow">↓</span></a>
+<div class="container">
+
+  <div class="demo">
+    <iframe src="https://icesuper.info/"></iframe>
+  </div>
+
+  <div class="right">
+    <div class="box">
+
+      <div class="badge">ICESUPER OFFICIAL</div>
+
+      <h1>ICESUPER WHITELABEL &amp; MASTER AVAILABLE</h1>
+
+      <p class="sub">
+        Get your Icesuper Whitelabel and Master Panel
+        in the cheapest rate.
+      </p>
+
+      <div class="features">
+        <div class="feature">
+          Whitelabel: <span>Available Now</span>
+        </div>
+
+        <div class="feature">
+          Master Panel: <span>Available Now</span>
+        </div>
+
+        <div class="feature">
+          Cheapest Rate: <span>Best Price</span>
+        </div>
+
+        <div class="feature">
+          Website: <span>icesuper.info</span>
+        </div>
       </div>
-      <div class="hero-stats">
-        <div class="stat"><strong>03</strong><span>Training zones</span></div>
-        <div class="stat"><strong>100%</strong><span>Your potential</span></div>
-        <div class="stat"><strong>01</strong><span>Next rep</span></div>
+
+      <div class="website-row">
+        <a class="website" href="https://icesuper.info/" target="_blank">
+          🌐 icesuper.info
+        </a>
+
+        <a class="whatsapp-small" href="https://wa.me/+447767775396" target="_blank">
+          💬 WhatsApp
+        </a>
       </div>
-    </div>
 
-    <div class="energy-art">
-      <div class="art-index">VLT / 001 — PERFORMANCE DIVISION</div>
-      <div class="art-disc"></div>
-      <div class="art-disc two"></div>
-      <div class="art-disc three"></div>
-      <div class="energy-core"><span>V</span></div>
-      <div class="art-label top">POWER UP!</div>
-      <div class="art-label bottom">NO OFF SWITCH</div>
-      <div class="art-side">STRENGTH / SPEED / CONTROL</div>
+      <a class="cta"
+         href="https://wa.me/+447767775396?text=Hello%20I%20want%20Icesuper%20Whitelabel%20or%20Master"
+         target="_blank">
+        📲 WhatsApp Now
+      </a>
+
+      <p class="trust">
+        ✅ Check our website on left side<br>
+        ✅ Direct WhatsApp support<br>
+        ✅ Cheapest rate available<br>
+        📞 +447767775396
+      </p>
+
+      <div class="footer">
+        Icesuper Whitelabel &amp; Master Available | Contact on WhatsApp
+      </div>
+
     </div>
   </div>
-</section>
 
-<div class="marquee">
-  <div class="marquee-track">
-    <span>Train with intent ✳</span><span>Earn your strength ✳</span><span>Push your limits ✳</span><span>Own your progress ✳</span>
-    <span>Train with intent ✳</span><span>Earn your strength ✳</span><span>Push your limits ✳</span><span>Own your progress ✳</span>
-  </div>
 </div>
 
-<section class="section" id="programs">
-  <div class="container">
-    <div class="section-heading reveal">
-      <div>
-        <div class="eyebrow">01 / Training programs</div>
-        <h2 class="section-title">CHOOSE YOUR<br><span class="orange">WEAPON.</span></h2>
-      </div>
-      <p>Build a stronger foundation or take your performance to another level. Find the training style that gets you moving.</p>
-    </div>
-
-    <div class="program-grid">
-      <article class="program-card reveal">
-        <div class="program-number">VOLT / 001</div>
-        <div class="program-symbol">↗</div>
-        <h3>Iron Works</h3>
-        <p>Structured strength training using free weights, machines and progressive overload.</p>
-        <div class="program-footer"><span>Build strength</span><b>01</b></div>
-      </article>
-      <article class="program-card reveal">
-        <div class="program-number">VOLT / 002</div>
-        <div class="program-symbol">ϟ</div>
-        <h3>High Voltage</h3>
-        <p>Dynamic conditioning sessions designed to challenge your stamina and cardiovascular fitness.</p>
-        <div class="program-footer"><span>Build endurance</span><b>02</b></div>
-      </article>
-      <article class="program-card reveal">
-        <div class="program-number">VOLT / 003</div>
-        <div class="program-symbol">◎</div>
-        <h3>Motion Lab</h3>
-        <p>Develop mobility, balance, coordination and more efficient movement patterns.</p>
-        <div class="program-footer"><span>Move better</span><b>03</b></div>
-      </article>
-    </div>
-  </div>
-</section>
-
-<section class="feature" id="about">
-  <div class="container">
-    <div class="feature-panel reveal">
-      <div class="feature-copy">
-        <div class="eyebrow">02 / The VOLT mindset</div>
-        <h2>EXCUSES<br>DON'T LIFT<br><span style="color:#17100d">WEIGHTS.</span></h2>
-        <p>Motivation gets you through the door. Discipline keeps you moving. We're here to help you build habits that last long after the workout ends.</p>
-        <a class="btn" href="#contact">Meet your new gym <span class="arrow">↗</span></a>
-      </div>
-      <div class="feature-graphic">VOLT<br>MODE</div>
-    </div>
-  </div>
-</section>
-
-<section class="section pricing" id="pricing">
-  <div class="container">
-    <div class="section-heading reveal">
-      <div>
-        <div class="eyebrow">03 / Membership</div>
-        <h2 class="section-title">PICK YOUR<br><span class="orange">POWER LEVEL.</span></h2>
-      </div>
-      <p>Simple options for different goals. Pick a starting point and make the commitment to yourself.</p>
-    </div>
-
-    <div class="pricing-grid">
-      <article class="price-card reveal">
-        <div class="price-name">Essential</div>
-        <div class="price">$30<small> / month</small></div>
-        <p class="price-note">Get in. Get stronger.</p>
-        <ul>
-          <li>Gym floor access</li>
-          <li>Strength equipment</li>
-          <li>Cardio zone access</li>
-          <li>Locker facilities</li>
-        </ul>
-        <a class="btn dark" href="#contact">Select Essential ↗</a>
-      </article>
-
-      <article class="price-card featured reveal">
-        <div class="price-tag">BEST VALUE</div>
-        <div class="price-name">Unlimited</div>
-        <div class="price">$60<small> / month</small></div>
-        <p class="price-note">More coaching. More options.</p>
-        <ul>
-          <li>Everything in Essential</li>
-          <li>Group workout classes</li>
-          <li>Monthly progress check</li>
-          <li>Training plan guidance</li>
-        </ul>
-        <a class="btn" href="#contact">Select Unlimited ↗</a>
-      </article>
-
-      <article class="price-card reveal">
-        <div class="price-name">Elite</div>
-        <div class="price">$100<small> / month</small></div>
-        <p class="price-note">Focused on your goals.</p>
-        <ul>
-          <li>Everything in Unlimited</li>
-          <li>Personal coaching session</li>
-          <li>Individual workout plan</li>
-          <li>Priority class booking</li>
-        </ul>
-        <a class="btn dark" href="#contact">Select Elite ↗</a>
-      </article>
-    </div>
-    <p style="font-size:10px;color:var(--muted);margin-top:18px">Prices are placeholders. Replace with your actual gym membership fees and terms.</p>
-  </div>
-</section>
-
-<section class="section" id="bmi">
-  <div class="container bmi-grid">
-    <div class="reveal">
-      <div class="eyebrow">04 / Check your baseline</div>
-      <h2 class="section-title">NUMBERS<br>DON'T TELL<br><span class="orange">EVERYTHING.</span></h2>
-      <p class="bmi-description">Calculate your Body Mass Index as a general screening measure. Remember: BMI doesn't distinguish muscle from fat and shouldn't be treated as a complete picture of your health.</p>
-    </div>
-
-    <div class="bmi-card reveal">
-      <h3>BMI / Quick calculator</h3>
-      <div class="input-grid">
-        <div class="input-group">
-          <label for="height">Height (cm)</label>
-          <input type="number" id="height" min="50" max="250" placeholder="175">
-        </div>
-        <div class="input-group">
-          <label for="weight">Weight (kg)</label>
-          <input type="number" id="weight" min="10" max="500" placeholder="75">
-        </div>
-      </div>
-      <button class="btn" id="calculateBtn">Calculate BMI <span class="arrow">↗</span></button>
-      <div class="result" id="result" aria-live="polite">
-        <div class="eyebrow">Your result</div>
-        <strong id="bmiValue">0.0</strong>
-        <p id="bmiStatus"></p>
-        <small id="bmiInfo"></small>
-      </div>
-      <p class="bmi-disclaimer">For adults 20 and older. BMI categories are screening references, not a diagnosis. Seek professional guidance for individual health advice.</p>
-    </div>
-  </div>
-</section>
-
-<section class="contact" id="contact">
-  <div class="container contact-row">
-    <div>
-      <h2>READY TO<br>SWITCH ON?</h2>
-      <p>Your first step is the only one we can't take for you.</p>
-    </div>
-    <a class="btn" href="mailto:hello@voltgym.com?subject=VOLT%20Athletics%20Membership">LET'S TALK <span class="arrow">↗</span></a>
-  </div>
-</section>
-</main>
-
-<footer>
-  <div class="container footer-row">
-    <a href="#home" class="brand">VOLT<span>.</span> ATHLETICS<small>PERFORMANCE CLUB</small></a>
-    <div class="footer-copy">© <span id="year"></span> VOLT ATHLETICS. KEEP MOVING.</div>
-    <div class="footer-links">
-      <a href="#">Instagram ↗</a>
-      <a href="#">TikTok ↗</a>
-    </div>
-  </div>
-</footer>
-
-<script>
-const toggle = document.getElementById('menuToggle');
-const nav = document.getElementById('navLinks');
-
-toggle.addEventListener('click', () => {
-  const isOpen = nav.classList.toggle('open');
-  toggle.textContent = isOpen ? '✕' : '☰';
-  toggle.setAttribute('aria-expanded', String(isOpen));
-});
-
-nav.querySelectorAll('a').forEach(link => {
-  link.addEventListener('click', () => {
-    nav.classList.remove('open');
-    toggle.textContent = '☰';
-    toggle.setAttribute('aria-expanded', 'false');
-  });
-});
-
-document.getElementById('year').textContent = new Date().getFullYear();
-
-const revealObserver = new IntersectionObserver(entries => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      entry.target.classList.add('visible');
-      revealObserver.unobserve(entry.target);
-    }
-  });
-}, { threshold: 0.12 });
-
-document.querySelectorAll('.reveal').forEach(element => {
-  revealObserver.observe(element);
-});
-
-document.getElementById('calculateBtn').addEventListener('click', () => {
-  const height = Number(document.getElementById('height').value);
-  const weight = Number(document.getElementById('weight').value);
-
-  if (!height || !weight || height < 50 || height > 250 || weight < 10 || weight > 500) {
-    alert('Please enter a valid height (50–250 cm) and weight (10–500 kg).');
-    return;
-  }
-
-  const bmi = weight / Math.pow(height / 100, 2);
-  let status = '';
-
-  if (bmi < 18.5) status = 'Below the usual adult reference range';
-  else if (bmi < 25) status = 'Within the usual adult reference range';
-  else if (bmi < 30) status = 'Above the usual adult reference range';
-  else status = 'In the high adult BMI range';
-
-  document.getElementById('bmiValue').textContent = bmi.toFixed(1);
-  document.getElementById('bmiStatus').textContent = status;
-  document.getElementById('bmiInfo').textContent = 'Adult BMI reference: below 18.5 / 18.5–24.9 / 25–29.9 / 30 and above.';
-  document.getElementById('result').style.display = 'block';
-});
-</script>
 </body>
 </html>
 ```
